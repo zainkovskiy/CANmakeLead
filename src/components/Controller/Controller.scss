@@ -1,0 +1,29 @@
+.controller {
+  min-width: 300px;
+  width: 300px;
+  background-color: #0b54a0;
+  max-height: 100vh;
+  position: sticky;
+  top: 0;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__buttons {
+    padding: 0.5rem;
+    background-color: #fff;
+    display: flex;
+    gap: 0.5rem;
+    border-radius: 4px;
+  }
+
+  &__history {
+    background-color: rgb(255, 255, 255);
+    padding: 0.5rem;
+    border-radius: 4px;
+    flex-grow: 1;
+    overflow: auto;
+  }
+}

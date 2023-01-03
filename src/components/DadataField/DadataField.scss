@@ -1,0 +1,24 @@
+.dadata__input{
+  box-shadow: none;
+  padding: 8.5px 14px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 17px;
+  border: 1px solid #737373;
+  color: #737373;
+  font-family: 'Montserret', sans-serif;
+  letter-spacing: 0.6px;
+  outline: 1px solid transparent;
+  margin: 1px 0 0 0;
+  &:focus{
+    border: 1px solid #0b54a0;
+    outline: 1px solid #0b54a0;
+  }
+}
+.datata__list-item{
+  font-size: 17px;
+  color: #737373;
+  font-family: 'Montserret', sans-serif;
+  letter-spacing: 0.6px;
+}

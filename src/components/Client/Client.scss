@@ -1,0 +1,13 @@
+.client{
+  &__wrap{
+    display: flex;
+    gap: 0.5rem;
+  }
+  &__inputs{
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1;
+  }
+}
