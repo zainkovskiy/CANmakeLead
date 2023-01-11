@@ -3,18 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Title } from "components/Title";
 import { SelectObject } from "components/SelectObject";
-import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { Button } from "@mui/material";
 import { TextField } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
+import { CustomToggleButton } from 'components/CustomToggleButton'
 
 import { setValueLead } from 'actions/lead';
 
 export const Communication = () => {
-  const [ open, setOpen ] = useState(false);
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const lead = useSelector((state) => state.lead).toJS();
@@ -48,17 +48,17 @@ export const Communication = () => {
                 onChange={handleChange}
                 fullWidth
               >
-                <ToggleButton name='callType' value="callIn">вх. звонок</ToggleButton>
-                <ToggleButton name='callType' value="callOut">иск. звонок</ToggleButton>
-                <ToggleButton name='callType' value="callMiss">пропущенный</ToggleButton>
+                <CustomToggleButton name='callType' value="callIn">вх. звонок</CustomToggleButton>
+                <CustomToggleButton name='callType' value="callOut">иск. звонок</CustomToggleButton>
+                <CustomToggleButton name='callType' value="callMiss">пропущенный</CustomToggleButton>
               </ToggleButtonGroup>
               <Autocomplete
-                sx={{width: '50%'}}
+                sx={{ width: '50%' }}
                 disablePortal
                 options={source}
                 getOptionLabel={(option) => option}
                 isOptionEqualToValue={(option, value) => option === value}
-                onChange={(event, newValue) => handleChange({value: newValue, type: 'autoSelect', name: 'callSource'})}
+                onChange={(event, newValue) => handleChange({ value: newValue, type: 'autoSelect', name: 'callSource' })}
                 value={lead?.callSource || null}
                 renderInput={(params) => <TextField {...params} label="Источник" size="small" />}
               />
@@ -75,43 +75,46 @@ export const Communication = () => {
                 value={lead?.callTarget || null}
                 fullWidth
               >
-                <ToggleButton name='callTarget' value="service">услуги</ToggleButton>
-                <ToggleButton name='callTarget' value="hr">персонал</ToggleButton>
-                <ToggleButton name='callTarget' value="complaint">жалоба</ToggleButton>
-                <ToggleButton name='callTarget' value="thank">благодарность</ToggleButton>
-                <ToggleButton name='callTarget' value="another">иное</ToggleButton>
+                <CustomToggleButton name='callTarget' value="service">услуги</CustomToggleButton>
+                <CustomToggleButton name='callTarget' value="complaint">жалоба</CustomToggleButton>
+                <CustomToggleButton name='callTarget' value="thank">благодарность</CustomToggleButton>
+                <CustomToggleButton name='callTarget' value="hr">персонал</CustomToggleButton>
+                <CustomToggleButton name='callTarget' value="another">иное</CustomToggleButton>
               </ToggleButtonGroup>
             </div>
           </div>
-          <div>
-            <FormControlLabel
-              color="grey"
-              control={
-                <Checkbox
-                  size="small"
-                  name='callIsObject'
-                  onChange={handleChange}
-                  checked={lead?.callIsObject || false}
-                />
+          {
+            lead?.callTarget !== 'hr' &&
+            <div>
+              <FormControlLabel
+                color="grey"
+                control={
+                  <Checkbox
+                    size="small"
+                    name='callIsObject'
+                    onChange={handleChange}
+                    checked={lead?.callIsObject || false}
+                  />
+                }
+                label="Обращение по объекту"
+              />
+              {
+                lead?.callIsObject &&
+                <Button
+                  size='small'
+                  variant='text'
+                  onClick={onOpen}
+                >
+                  Выбрать
+                </Button>
               }
-              label="Обращение по объекту"
-            />
-            {
-              lead?.callIsObject &&
-              <Button
-                size='small'
-                variant='text'
-                onClick={onOpen}
-              >
-                Выбрать
-              </Button>
-            }
-          </div>
+            </div>
+          }
         </div>
       </div>
       <Outlet />
       {
-        open && 
+        open &&
         <SelectObject
           open={open}
           onClose={onClose}
@@ -122,8 +125,8 @@ export const Communication = () => {
 }
 
 const source = [
-    'vacancy 1',
-    'vacancy 2',
-    'vacancy 3',
-    'vacancy 4',
+  'vacancy 1',
+  'vacancy 2',
+  'vacancy 3',
+  'vacancy 4',
 ]

@@ -4,7 +4,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import { DialogTitle } from "@mui/material";
 import { DialogActions } from "@mui/material";
-import { YMaps, Map, Button, Circle } from "react-yandex-maps";
+import { YMaps, Map, Button, Circle, FullscreenControl, ZoomControl, SearchControl } from "react-yandex-maps";
 import { toggleMap, addValue, editValue } from 'actions/address';
 import * as MuiComponents from "@mui/material";
 
@@ -93,14 +93,17 @@ export const MapField = ({ open, currentArea }) => {
                 title: `${isShowCircleEdit ? 'Очистить область' : 'Указать на карте (круг)'}`,
               }}
               options={{
-                float: 'left',
-                position: {
-                  left: 10,
-                  top: 10
-                }
+                float: 'right',
+                // position: {
+                //   left: 10,
+                //   top: 10
+                // }
               }}
               onClick={() => { setisShowCircleEdit(!isShowCircleEdit) }}
             />
+            <FullscreenControl/>
+            <ZoomControl/>
+            <SearchControl/>
           </Map>
         </YMaps>
       </DialogContent>

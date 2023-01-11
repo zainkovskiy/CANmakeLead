@@ -7,7 +7,7 @@ import { Review } from "components/Review";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/dev/makeLead/',
     element: <App />,
     children: [
       {

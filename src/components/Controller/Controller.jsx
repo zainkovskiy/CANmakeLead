@@ -42,6 +42,7 @@ export const Controller = () => {
           name="result"
           onChange={handleChange}
           value={lead?.result || null}
+          sx={{userSelect: 'none'}}
         >
           <FormControlLabel color="white" value="success" control={
             <Radio

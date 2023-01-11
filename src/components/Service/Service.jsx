@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setValueLead } from 'actions/lead';
-import { ToggleButtonGroup, ToggleButton } from '@mui/material';
+import { ToggleButtonGroup } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { Button } from "@mui/material";
@@ -9,6 +9,7 @@ import { Title } from "components/Title";
 import { Residential } from "components/Residential";
 import { Commercial } from "components/Commercial";
 import { useSelectionObject } from "hooks/bundleObject";
+import { CustomToggleButton } from 'components/CustomToggleButton'
 
 export const Service = () => {
   const dispatch = useDispatch();
@@ -40,10 +41,10 @@ return (
         exclusive
       >
 
-        <ToggleButton name='serviceAction' value="buy">купить</ToggleButton>
-        <ToggleButton name='serviceAction' value="rent">снять</ToggleButton>
-        <ToggleButton name='serviceAction' value="sell">продать</ToggleButton>
-        <ToggleButton name='serviceAction' value="toRent">сдать</ToggleButton>
+        <CustomToggleButton name='serviceAction' value="buy">купить</CustomToggleButton>
+        <CustomToggleButton name='serviceAction' value="rent">снять</CustomToggleButton>
+        <CustomToggleButton name='serviceAction' value="sell">продать</CustomToggleButton>
+        <CustomToggleButton name='serviceAction' value="toRent">сдать</CustomToggleButton>
       </ToggleButtonGroup>
       <ToggleButtonGroup
         color="primary"
@@ -54,8 +55,8 @@ return (
         fullWidth
       >
 
-        <ToggleButton name='serviceEstateType' value="residential">жилая</ToggleButton>
-        <ToggleButton name='serviceEstateType' value="commercial">коммерческая</ToggleButton>
+        <CustomToggleButton name='serviceEstateType' value="residential">жилая</CustomToggleButton>
+        <CustomToggleButton name='serviceEstateType' value="commercial">коммерческая</CustomToggleButton>
       </ToggleButtonGroup>
       {
         (lead?.serviceAction === 'buy' && lead?.serviceEstateType === 'residential') &&

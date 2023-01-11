@@ -4,11 +4,11 @@ import { setValueClient } from 'actions/client';
 
 import { Title } from "components/Title";
 import { TextField } from "@mui/material";
-import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import './Client.scss';
+import { CustomToggleButton } from 'components/CustomToggleButton'
 
 const ClientMemo = () => {
   const dispatch = useDispatch();
@@ -32,9 +32,9 @@ const ClientMemo = () => {
             sx={{ justifySelf: 'flex-end' }}
             fullWidth
           >
-            <ToggleButton name='clientType' value="private">физ. лицо</ToggleButton>
-            <ToggleButton name='clientType' value="legal">юр. лицо</ToggleButton>
-            <ToggleButton name='clientType' value="spam">спам</ToggleButton>
+            <CustomToggleButton name='clientType' value="private">физ. лицо</CustomToggleButton>
+            <CustomToggleButton name='clientType' value="legal">юр. лицо</CustomToggleButton>
+            <CustomToggleButton name='clientType' value="spam">спам</CustomToggleButton>
           </ToggleButtonGroup>
           <div className="client__wrap">
             <div className="client__inputs">

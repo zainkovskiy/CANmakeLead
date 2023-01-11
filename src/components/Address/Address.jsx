@@ -82,13 +82,13 @@ export const Address = () => {
         {
           address?.mapArea?.length > 0 &&
           <div className="address__pin">
-            <p className="text address__title">Области на карте</p>
+            <p className="text address__title">Место на карте</p>
             {
               address.mapArea.map((area, idx) => {
                 return (
                   <Chip
                     key={idx}
-                    label={`Область ${idx + 1}`}
+                    label={`Место на карте ${idx + 1}`}
                     variant="outlined"
                     onClick={() => { editArea(area) }}
                     onDelete={() => { removeArea(area) }}
