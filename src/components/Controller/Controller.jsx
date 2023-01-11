@@ -12,7 +12,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import moment from "moment";
 import { useAllObject } from "hooks/bundleObject";
-
+import { HistoryItem } from 'components/HistoryItem';
 import { setValueLead, clearLead } from 'actions/lead';
 import { clearClient } from 'actions/client';
 import { clearAddress } from 'actions/address';
@@ -42,7 +42,7 @@ export const Controller = () => {
           name="result"
           onChange={handleChange}
           value={lead?.result || null}
-          sx={{userSelect: 'none'}}
+          sx={{ userSelect: 'none' }}
         >
           <FormControlLabel color="white" value="success" control={
             <Radio
@@ -106,14 +106,11 @@ export const Controller = () => {
       </label>
       <span className="text" style={{ marginBottom: '-0.5rem', color: '#fff' }}>History</span>
       <div className="controller__history">
-        <span style={{ color: "#737373" }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ea laboriosam quae quibusdam exercitationem iste, sequi ut ducimus perferendis. Perspiciatis odit aliquam temporibus maxime culpa odio reiciendis, ratione provident. Animi.
-          Itaque quaerat tenetur repudiandae voluptatum, veritatis nobis ratione obcaecati sapiente cumque aspernatur omnis ea odio corrupti ipsum maxime esse voluptatibus a aperiam. Perferendis animi nisi nostrum aperiam possimus necessitatibus ipsa!
-          Alias veniam dicta quaerat nihil, voluptates, eos saepe porro iste eius, pariatur ab. Quia minus, tempore minima et iure nisi blanditiis iste atque quos consequuntur, facilis eveniet cumque quis suscipit?
-          Fugiat explicabo inventore itaque tempore sed aperiam cumque voluptatum doloribus illum asperiores architecto hic, iure aspernatur eius? Tempora ut ipsum dolores accusamus ducimus, quas repudiandae. Facilis ratione quas ab quidem.
-          Cumque eos vero quibusdam laborum soluta laboriosam. Necessitatibus explicabo quidem iure odio, ducimus aliquam unde voluptatum. Nesciunt ratione nobis, nemo at aut dolores optio, quasi provident delectus incidunt quisquam soluta?
-          Voluptatem quasi quisquam labore non minus nihil omnis, cum consequatur maxime enim necessitatibus odit odio? Obcaecati libero autem quae ullam at iure expedita hic illum similique? Et minus ea laboriosam!
-          Debitis velit, modi, iure id exercitationem quasi esse quas sequi officia, quis atque corrupti iste asperiores magnam cumque quod maiores perspiciatis ipsum cupiditate sit corporis ex eaque qui. Numquam, ab.
-          Earum, numquam! Enim eius temporibus deleniti laudantium excepturi sint illum ab adipisci obcaecati totam numquam, nulla in facere dolor ad sunt repellendus odit repudiandae cum voluptas eaque animi similique! Suscipit!</span>
+        {
+          history.map((item) => {
+            return <HistoryItem item={item} key={item.UID}/>
+          })
+        }
       </div>
       <div className="controller__buttons">
         <Button
@@ -136,3 +133,28 @@ export const Controller = () => {
     </div>
   )
 }
+
+const history = [
+  {
+    "UID": 4158,
+    "author": {
+      "UID": 2198,
+      "fullName": "Мищенко Иван"
+    },
+    "nTitle": "Заголовок Новости",
+    "nDate": "2023-01-01 15:00:42",
+    "nBody": "Текст новости",
+    "nPicture": "https://w7.pngwing.com/pngs/646/159/png-transparent-computer-icons-newspaper-breaking-news-others-text-label-trademark-thumbnail.png"
+  },
+  {
+    "UID": 4159,
+    "author": {
+      "UID": 2198,
+      "fullName": "Мищенко Иван"
+    },
+    "nTitle": "Заголовок Новости",
+    "nDate": "2023-01-01 15:00:42",
+    "nBody": "Текст новости",
+    "nPicture": "https://w7.pngwing.com/pngs/646/159/png-transparent-computer-icons-newspaper-breaking-news-others-text-label-trademark-thumbnail.png"
+  }
+]
