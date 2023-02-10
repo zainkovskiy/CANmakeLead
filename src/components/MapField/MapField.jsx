@@ -32,8 +32,8 @@ export const MapField = ({ open, currentArea }) => {
   }
 
   const onSave = () => {
-    if (isShowCircleEdit) {return};
-    
+    if (isShowCircleEdit) { return };
+
     if (circleGeametryRef.current?.length > 0) {
       if (currentArea) {
         dispatch(editValue({
@@ -60,7 +60,14 @@ export const MapField = ({ open, currentArea }) => {
     >
       <DialogTitle>Карта</DialogTitle>
       <DialogContent>
-        <YMaps height={400} width='100%'>
+        <YMaps
+          height={400}
+          width='100%'
+          query={{
+            apikey: '4ed55148-64dc-447c-a240-f3f034053bbf',
+            // load: 'package.full' 
+          }}
+        >
           <Map
             defaultState={{ center: [55.030204, 82.920430], zoom: 14 }}
             modules={["geoObject.addon.editor"]}
@@ -101,9 +108,9 @@ export const MapField = ({ open, currentArea }) => {
               }}
               onClick={() => { setisShowCircleEdit(!isShowCircleEdit) }}
             />
-            <FullscreenControl/>
-            <ZoomControl/>
-            <SearchControl/>
+            <FullscreenControl />
+            <ZoomControl />
+            <SearchControl />
           </Map>
         </YMaps>
       </DialogContent>
